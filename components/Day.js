@@ -29,7 +29,7 @@ export default function Day({ day, onClick }) {
   }
 
   return (
-    <Flex direction="column">
+    <Flex direction="column" w="100px" h="100px" border="1px" borderColor="gray.200">
       <p>{day}</p>
       {events.map((eventOfDay) => (
         <Button>{eventOfDay.name}</Button>
@@ -38,7 +38,9 @@ export default function Day({ day, onClick }) {
         icon={<AddIcon />}
         onClick={onOpen}
         aria-label="Adicionar evento"
-        borderRadius="100%"
+        borderRadius="50%"
+        w="35px"
+        h="35px"
       />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
