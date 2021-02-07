@@ -12,11 +12,13 @@ import {
   Center,
   IconButton,
   OrderedList,
-  ListItem
+  ListItem,
+  Tooltip
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import TimeSelector from './TimeSelector';
+import CitiesSelector from './CitiesSelector';
 
 export default function Day({ day }) {
   const [events, setEvents] = useState([]);
@@ -28,7 +30,8 @@ export default function Day({ day }) {
         name: e.target.name.value,
         hour: e.target.hour.value,
         minute: e.target.minute.value,
-        period: e.target.period.value
+        period: e.target.period.value,
+        city: e.target.city.value
       },
       ...events
     ];
@@ -41,9 +44,11 @@ export default function Day({ day }) {
       <OrderedList styleType="none" m={0}>
         {events.map((eventOfDay) => (
           <ListItem>
-            <Button variant="ghost" h="20px" w="100%">
-              {eventOfDay.name} - {eventOfDay.hour}:{eventOfDay.minute} {eventOfDay.period}
-            </Button>
+            <Tooltip label={eventOfDay.city}>
+              <Button variant="ghost" h="20px" w="100%">
+                {eventOfDay.name} - {eventOfDay.hour}:{eventOfDay.minute} {eventOfDay.period}
+              </Button>
+            </Tooltip>
           </ListItem>
         ))}
       </OrderedList>
@@ -77,6 +82,10 @@ export default function Day({ day }) {
               <FormControl mt={5}>
                 <FormLabel>Time</FormLabel>
                 <TimeSelector />
+              </FormControl>
+              <FormControl mt={5}>
+                <FormLabel>Time</FormLabel>
+                <CitiesSelector />
               </FormControl>
               <Button mt={5} type="submit" colorScheme="green">
                 Save
