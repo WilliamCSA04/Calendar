@@ -10,7 +10,9 @@ import {
   ModalCloseButton,
   Button,
   Center,
-  IconButton
+  IconButton,
+  OrderedList,
+  ListItem
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
@@ -29,15 +31,17 @@ export default function Day({ day, onClick }) {
   }
 
   return (
-    <Flex direction="column" w="100px" h="100px" border="1px" borderColor="gray.200" p={1}>
+    <Flex direction="column" w="180px" h="180px" border="1px" borderColor="gray.200" p={1}>
       <p>{day}</p>
-      <ol>
+      <OrderedList styleType="none" m={0}>
         {events.map((eventOfDay) => (
-          <Button variant="ghost" h="20px" w="100%">
-            {eventOfDay.name}
-          </Button>
+          <ListItem>
+            <Button variant="ghost" h="20px" w="100%">
+              {eventOfDay.name}
+            </Button>
+          </ListItem>
         ))}
-      </ol>
+      </OrderedList>
       <IconButton
         icon={<AddIcon />}
         colorScheme="blue"
