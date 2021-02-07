@@ -3,7 +3,11 @@ import { Center, Select } from '@chakra-ui/react';
 function generateArrayOfSequentialNumbers(quantity) {
   const list = [];
   for (let current = 0; current <= quantity; current++) {
-    list.push(current);
+    if (current < 10) {
+      list.push(`0${current}`);
+    } else {
+      list.push(current);
+    }
   }
   return list;
 }
