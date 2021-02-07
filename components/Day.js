@@ -23,7 +23,7 @@ export default function Day({ day }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   function onSubmit(e) {
     e.preventDefault();
-    setEvents([
+    const newEvents = [
       {
         name: e.target.name.value,
         hour: e.target.hour.value,
@@ -31,7 +31,8 @@ export default function Day({ day }) {
         period: e.target.period.value
       },
       ...events
-    ]);
+    ];
+    setEvents(newEvents);
   }
 
   return (
@@ -71,7 +72,7 @@ export default function Day({ day }) {
               direction="column">
               <FormControl>
                 <FormLabel>Event Name</FormLabel>
-                <Input name="name" />
+                <Input name="name" maxLength="30" />
               </FormControl>
               <FormControl>
                 <FormLabel>Time</FormLabel>
