@@ -1,9 +1,24 @@
-export default function Day({ day, onClick }) {
+import { FormControl, FormLabel, Modal, Flex, Input } from '@chakra-ui/react';
+
+export default function Day({ day, onClick, events = [] }) {
+  useD;
   return (
-    <div>
-      <button>
+    <>
+      <div>
         <p>{day}</p>
-      </button>
-    </div>
+        {events.map((eventOfDay) => (
+          <button>{eventOfDay}</button>
+        ))}
+        <button>adicionar Evento</button>
+      </div>
+      <Modal>
+        <Flex as="form">
+          <FormControl>
+            <FormLabel>Nome do evento</FormLabel>
+            <Input name="event" />
+          </FormControl>
+        </Flex>
+      </Modal>
+    </>
   );
 }

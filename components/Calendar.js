@@ -1,3 +1,4 @@
+import { SimpleGrid } from '@chakra-ui/layout';
 import { eachDayOfInterval, endOfMonth, startOfMonth } from 'date-fns';
 import Day from './Day';
 
@@ -15,10 +16,10 @@ export default function Calendar() {
   const days = useDaysOfMonth();
 
   return (
-    <div>
+    <SimpleGrid columns={7}>
       {days.map((day) => (
         <Day key={day} day={day} />
       ))}
-    </div>
+    </SimpleGrid>
   );
 }
