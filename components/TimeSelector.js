@@ -1,4 +1,4 @@
-import { Center, Select, SelectField } from '@chakra-ui/react';
+import { Center, Select } from '@chakra-ui/react';
 
 function generateArrayOfSequentialNumbers(quantity) {
   const list = [];
@@ -15,20 +15,20 @@ export default function TimeSelector({ hour = '0', minute = '0', period = 'AM' }
     <Center as="time">
       <Select name="hour">
         {hours.map((hour) => (
-          <SelectField value={hour} sele>
+          <option value={hour} sele>
             {hour}
-          </SelectField>
+          </option>
         ))}
       </Select>
       :
       <Select name="minute">
         {minutes.map((minute) => (
-          <SelectField value={minute}>{minute}</SelectField>
+          <option value={minute}>{minute}</option>
         ))}
       </Select>
       <Select name="period">
-        <SelectField value="AM">AM</SelectField>
-        <SelectField value="PM">PM</SelectField>
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
       </Select>
     </Center>
   );
