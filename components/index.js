@@ -1,3 +1,4 @@
 import Day from './Day';
+import Calendar from './Calendar';
 
-export default { Day };
+export { Day, Calendar };
