@@ -70,15 +70,17 @@ export default function Day({ day }) {
                 onClose();
               }}
               direction="column">
-              <FormControl>
+              <FormControl mt={5}>
                 <FormLabel>Event Name</FormLabel>
                 <Input name="name" maxLength="30" />
               </FormControl>
-              <FormControl>
+              <FormControl mt={5}>
                 <FormLabel>Time</FormLabel>
                 <TimeSelector />
               </FormControl>
-              <Button type="submit">Save</Button>
+              <Button mt={5} type="submit" colorScheme="green">
+                Save
+              </Button>
             </Flex>
           </Center>
         </ModalContent>
