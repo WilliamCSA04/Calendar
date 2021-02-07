@@ -9,8 +9,10 @@ import {
   ModalContent,
   ModalCloseButton,
   Button,
-  Center
+  Center,
+  IconButton
 } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 
 export default function Day({ day, onClick }) {
@@ -30,16 +32,22 @@ export default function Day({ day, onClick }) {
     <Flex direction="column">
       <p>{day}</p>
       {events.map((eventOfDay) => (
-        <button>{eventOfDay.name}</button>
+        <Button>{eventOfDay.name}</Button>
       ))}
-      <button onClick={onOpen}>Adicionar evento</button>
+      <IconButton
+        icon={<AddIcon />}
+        onClick={onOpen}
+        aria-label="Adicionar evento"
+        borderRadius="100%"
+      />
       <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
         <ModalContent margin="auto" w="300px" backgroundColor="white">
-          <ModalOverlay />
           <ModalCloseButton />
           <Center>
             <Flex
               as="form"
+              m={5}
               onSubmit={(e) => {
                 onSubmit(e);
                 onClose();
