@@ -20,14 +20,14 @@ export default function Day({ day, onClick }) {
     e.preventDefault();
     setEvents([
       {
-        name: e.target.name
+        name: e.target.name.value
       },
       ...events
     ]);
   }
 
   return (
-    <div>
+    <Flex direction="column">
       <p>{day}</p>
       {events.map((eventOfDay) => (
         <button>{eventOfDay.name}</button>
@@ -38,16 +38,22 @@ export default function Day({ day, onClick }) {
           <ModalOverlay />
           <ModalCloseButton />
           <Center>
-            <Flex as="form" onSubmit={onSubmit} direction="column">
+            <Flex
+              as="form"
+              onSubmit={(e) => {
+                onSubmit(e);
+                onClose();
+              }}
+              direction="column">
               <FormControl>
                 <FormLabel>Nome do evento</FormLabel>
-                <Input name="event" />
+                <Input name="name" />
               </FormControl>
               <Button type="submit">Criar</Button>
             </Flex>
           </Center>
         </ModalContent>
       </Modal>
-    </div>
+    </Flex>
   );
 }
