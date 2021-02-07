@@ -16,15 +16,19 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import TimeSelector from './TimeSelector';
 
-export default function Day({ day, onClick }) {
+export default function Day({ day }) {
   const [events, setEvents] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   function onSubmit(e) {
     e.preventDefault();
     setEvents([
       {
-        name: e.target.name.value
+        name: e.target.name.value,
+        hour: e.target.hour.value,
+        minute: e.target.minute.value,
+        period: e.target.period.value
       },
       ...events
     ]);
@@ -37,7 +41,7 @@ export default function Day({ day, onClick }) {
         {events.map((eventOfDay) => (
           <ListItem>
             <Button variant="ghost" h="20px" w="100%">
-              {eventOfDay.name}
+              {eventOfDay.name} - {eventOfDay.hour}:{eventOfDay.minute} {eventOfDay.period}
             </Button>
           </ListItem>
         ))}
@@ -66,10 +70,14 @@ export default function Day({ day, onClick }) {
               }}
               direction="column">
               <FormControl>
-                <FormLabel>Nome do evento</FormLabel>
+                <FormLabel>Event Name</FormLabel>
                 <Input name="name" />
               </FormControl>
-              <Button type="submit">Criar</Button>
+              <FormControl>
+                <FormLabel>Time</FormLabel>
+                <TimeSelector />
+              </FormControl>
+              <Button type="submit">Save</Button>
             </Flex>
           </Center>
         </ModalContent>
