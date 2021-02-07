@@ -29,16 +29,22 @@ export default function Day({ day, onClick }) {
   }
 
   return (
-    <Flex direction="column" w="100px" h="100px" border="1px" borderColor="gray.200">
+    <Flex direction="column" w="100px" h="100px" border="1px" borderColor="gray.200" p={1}>
       <p>{day}</p>
-      {events.map((eventOfDay) => (
-        <Button>{eventOfDay.name}</Button>
-      ))}
+      <ol>
+        {events.map((eventOfDay) => (
+          <Button variant="ghost" h="20px" w="100%">
+            {eventOfDay.name}
+          </Button>
+        ))}
+      </ol>
       <IconButton
         icon={<AddIcon />}
+        colorScheme="blue"
         onClick={onOpen}
         aria-label="Adicionar evento"
         borderRadius="50%"
+        mt="auto"
         w="35px"
         h="35px"
       />
